@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="div">
+		<!-- 1.修饰符lazy的使用 -->
+		<input type="text" v-model.lazy="message">
+		<h1>{{message}}</h1>
+		<!-- 2.修饰符number的使用 -->
+		<!-- 如果只定义type的类型为number，实际上input输入的值的类型为string，需要修饰符number来指定一下number类型 -->
+		<input type="number" v-model="phone">
+		<h2>{{phone}}--{{typeof phone}}</h2>
+		
+		<input type="number" v-model.number="movie">
+		<h2>{{movie}}--{{typeof movie}}</h2>
+		<!-- 3.修饰符trim的使用 -->
+		<input type="text" v-model.trim="book">
+		<h2>{{book}}</h2>
+	</div>
+	<script type="text/javascript">
+		const app = new Vue({
+			el: '.div',
+			data: {
+				message: 'he',
+				movie: 2,
+				book: '',
+				phone: 'xiaomi'
+			}
+		})
+	</script>
+</body>
+</html>

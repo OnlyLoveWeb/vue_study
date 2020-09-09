@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="div">
+		<!-- 1.遍历对象的值 -->
+		<p v-for="item in person ">{{item}}</p><br />
+		<!-- 2.遍历对象的键值对 -->
+		<p v-for="(item, key) in person">{{key}}--{{item}}</p><br />
+		<!-- 3.遍历键值对和索引 -->
+		<p v-for="(item, key, index) in person">{{index + 1}}--{{key}}--{{item}}</p>
+	</div>
+	<script type="text/javascript">
+		const app = new Vue({
+			el: '.div',
+			data: {
+				person: {
+					sex: '男',
+					country: 'china',
+					province: 'henan'
+				}
+			}
+		})
+	</script>
+</body>
+</html>

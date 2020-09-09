@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="div">
+		<h2>{{fullName}}</h2>
+		<h2>{{fullName}}</h2>
+		<h2>{{fullName}}</h2>
+		<h2>{{fullName}}</h2>
+		<h2>{{fullName}}</h2>
+		<h3>{{getFullName()}}</h3>
+		<h3>{{getFullName()}}</h3>
+		<h3>{{getFullName()}}</h3>
+		<h3>{{getFullName()}}</h3>
+		<h3>{{getFullName()}}</h3>
+	</div>
+	<div id="div">
+		<ul id="demo">
+			<li v-for="(item, index) in items">
+				{{index}} -{{parentMessage}} {{item.msg}}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		const app = new Vue({
+			el: '.div',
+			data: {
+				firstName: 'shen',
+				lastName: 'zy'
+			},
+			computed: {
+				fullName: function(){
+					return this.firstName + ' ' + this.lastName;
+				}
+			},
+			methods: {
+				getFullName: function(){
+					return this.firstName + ' ' + this.lastName;
+				}
+			}
+		})
+	</script>
+	<script type="text/javascript">
+		const demo = new Vue({
+			el: '#demo',
+			data: {
+				parentMessage: '滴滴',
+				items: [
+					
+					{msg: '滴滴顺风车'},
+					{msg: '滴滴专车'}
+				]
+			}
+		})
+	</script>
+</body>
+</html>

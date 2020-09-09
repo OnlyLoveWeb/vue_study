@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		.div {
+			margin: 0 100px;
+		}
+		table {
+			border-top: 1px solid #ccc;
+			border-left: 1px solid #ccc;
+			text-align: center;
+		}
+		td, th{
+			border-bottom: 1px solid #ccc;
+			border-right: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div class="div">
+		<table cellspacing="0">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>书名</th>
+					<th>出版日期</th>
+					<th>价格</th>
+					<th>数量</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="item in books">
+					<td>{{item.id}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.date}}</td>
+					<td>{{item.price}}</td>
+					<td>
+						<button type="button">-</button>
+						{{item.count}}
+						<button type="button">+</button>
+					</td>
+					<td>
+						<button>移除</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript">
+		const app = new Vue({
+			el: '.div',
+			data: {
+				books: [{
+					id: 1,
+					name: '算法导论1',
+					date: 2020-05-02,
+					price: 45,
+					count: 1				
+				},
+				{
+					id: 2,
+					name: '算法导论2',
+					date: 2020-05-03,
+					price: 46,
+					count: 1				
+				},
+				{
+					id: 3,
+					name: '算法导论3',
+					date: 2020-05-06,
+					price: 42,
+					count: 1				
+				},
+				{
+					id: 4,
+					name: '算法导论4',
+					date: 2020-05-04,
+					price: 43,
+					count: 1				
+				}]
+			},
+			computed: {
+				
+			}
+		})
+	</script>
+</body>
+</html>

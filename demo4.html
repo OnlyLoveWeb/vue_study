@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="div">
+		<cpn :c-Message='message'></cpn>
+	</div>
+	<template id="cpn">
+		<div>
+			<h2>父子组件通信demo</h2>
+			<p>多写代码万岁{{cMessage}}</p>
+		</div>
+	</template>
+	<script type="text/javascript">
+		const cpn = {
+			template: '#cpn',
+			props: {
+				cMessage: {
+					type: String,
+					default() {
+						return '';
+					},
+					required: true
+			}
+		}
+	}
+		var app = new Vue({
+			el: '.div',
+			data: {
+				message: 'heihei'
+			},
+			components: {
+				cpn
+			}
+		})
+	</script>
+</body>
+</html>

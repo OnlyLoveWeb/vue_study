@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<!-- 1. stop修饰符的使用，阻止事件冒泡 -->
+	<div class="div">
+		<div @click="div">
+			<button @click.stop="btn">按钮1</button>
+		</div>
+		<br />
+	<!-- 2. prevent修饰符的使用 -->
+	<!-- 含表达式 -->
+		<form action="baidu">
+			<input type="submit" value="提交" @click.prevent="submitClick">
+		</form>
+	<!-- 不含表达式 -->	
+		<a href="https://www.baidu.com" @click.prevent>百度</a>
+	<!-- 3. enter修饰符的使用 -->
+		<input type="text" @keyup.enter="keyupClick">
+	<!-- 4. once修饰符的使用 -->
+		<button type="button" @click.once="onceClick">按钮2</button>
+	</div>
+	<script type="text/javascript">
+		const app = new Vue({
+			el: '.div',
+			data: {
+				
+			},
+			methods: {
+				div() {
+					console.log('div');
+				},
+				btn() {
+					console.log('btn');
+				},
+				submitClick() {
+					console.log('submitClick');
+				},
+				keyupClick() {
+					console.log('keyup');
+				},
+				onceClick() {
+					console.log('onceClick');
+				}
+			}
+		})
+	</script>
+</body>
+</html>

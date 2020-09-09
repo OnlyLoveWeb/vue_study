@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 三个需求
+		// 需求1：将nums数组中小于100的数字过滤出来过,添加到新数组中
+		// 需求2：将新数组中是数字分别乘以2
+		// 需求3：将新数组中的数字相加
+		const nums = [10, 20, 24, 80, 101, 124];
+		// 1.普通做法
+		// let newNum = [];
+		// for(let i of nums){
+		// 	if(i < 100){
+		// 		newNum.push(i);
+		// 	}
+		// }
+		// let newNum1 = [];
+		// for(let i of newNum){
+		// 	newNum1.push(i * 2);
+		// }
+		// let total = 0
+		// for(let i of newNum1){
+		// 	total += i;
+		// }
+		// 2.高阶函数
+		// 2.1 filter----传入一个回调函数，要求必须返回一个布尔值
+		// true: 当返回true时，函数内部会自动将这次回调的i加入到新的数组中
+		// false：当返回false时，函数内部会自动过滤掉这次的i
+		// let newNum = [];
+		// newNum = nums.filter(function(i){
+		// 	return i < 100;
+		// });
+		// // 2.2 map----传入一个回调函数，返回一个值；
+		// let newNum1 = newNum.map(function(i){
+		// 	return i * 2;
+		// });
+		// // 2.3 reduce----传入两个参数，第一个为回调函数，第二个参数为普通值，
+		// // reduce对数组中的所有元素进行汇总
+		// total = newNum1.reduce(function(preValue, i){
+		// 	return preValue + i;
+		// }, 0);
+		// console.log(total);
+		// 组合写法
+		let total = nums.filter(function(i){
+			return i < 100;
+		}).map(function(i){
+			return i * 2;
+		}).reduce(function(preValue, i){
+			return preValue + i;
+		},0)
+		console.log(total);
+	</script>
+</body>
+</html>

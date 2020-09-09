@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="div">
+		<label :for="item" v-for="item in originHobbies">
+			<input type="checkbox" :value="item" :id='item' v-model="hobbies">{{item}}
+		</label>
+		<h1>{{hobbies}}</h1>
+	</div>
+	<script type="text/javascript">
+		const app = new Vue({
+			el: '.div',
+			data: {
+				hobbies: [],
+				originHobbies: ['篮球', '足球', '网球']
+			}
+		})
+	</script>
+</body>
+</html>

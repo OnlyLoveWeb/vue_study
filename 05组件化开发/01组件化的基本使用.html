@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="div">
+		<!-- 第三步：使用组件 -->
+		<my-cpn></my-cpn>
+	</div>
+	<script type="text/javascript">
+		// 第一步：创建组件
+		const cpnC = Vue.extend({
+			template: `
+			<div>
+			<h1>第一个组件</h1>
+			<p>学如逆水行舟</p>
+			<p>不进则退</p>
+			</div>`
+		});
+		// 第二步：注册组件
+		Vue.component('my-cpn', cpnC);
+		const app = new Vue({
+			el: '.div'
+		})
+		
+	</script>
+</body>
+</html>

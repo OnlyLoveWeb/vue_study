@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="div">
+		<cpn v-bind:cmovies="movies" :cmessage='message'></cpn>
+	</div>
+	<template id="cpn">
+		<div>
+			<h2>{{cmessage}}</h2>
+			<ul>
+				<li v-for="item in cmovies">{{item}}</li>
+			</ul>
+		</div>
+	</template>
+	<script type="text/javascript">
+		const cpn = {
+			template: '#cpn',
+			// props: ['cmovies', 'cmessage'],
+			// 1.类型限制
+			// props: {
+			// 	cmovies: Array,
+			// 	cmessage: String
+			// }
+			// 2.提供一些默认值及必传属性
+			props: {
+				cmovies: {
+					type: Array,
+					default() {
+						return [];
+					},
+					required: true	
+				},
+				cmessage: {
+					type: String,
+					default: 'hello',
+					required: true
+				}
+			}
+		}
+		const app = new Vue({
+			el: '.div',
+			data: {
+				movies: ['dong', 'nan', 'xi', 'bei'],
+				message: '你好吗'
+			},
+			components: {
+				cpn
+			}
+		})
+	</script>
+	<script type="text/javascript">
+		Vue.component('my-component', {
+			props:{
+				// 基础类型检查（null匹配任何类型）
+				propA: Number,
+				// 匹配多个类型
+				propB: [String,Number],
+				// 必填的字符串
+				propc: {
+					type: String,
+					requried: true
+				},
+				// 带有默认值的数字
+				propD: {
+					type: Number,
+					default: 100
+				},
+				// 带有默认值的对象
+				propE: {
+					type: Object,
+					// 对象或数组默认值必须从一个工厂函数获取
+					default: function() {
+						return {message: 'hello'}
+					}
+				},
+				// 自定义验证函数
+				propF: {
+					validator: function(value) {
+						// 这些值必须匹配下列字符串中的一个
+						return ['success', 'warning', 'danger'].indexof(value) !== -1
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

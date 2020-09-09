@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="div">
+		<cpn></cpn>	
+	</div>
+	<script type="text/javascript">
+		const cpnC = Vue.extend({
+			template: `
+			<div>
+				<h1>我是标题</h1>
+				<p>哈哈</p>
+				<p>喝喝</p>
+			</div>
+			`
+		})
+		const app = new Vue({
+			el: '.div',
+			components: {
+				cpn: cpnC
+			}
+		})
+	</script>
+</body>
+</html>

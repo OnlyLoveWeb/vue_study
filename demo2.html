@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		.red {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="div">
+		<ul>
+			<li v-for="(item, index) in books" :class="{red: currentIndex === index}" @click="dj(index)">{{item}}</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		const app = new Vue({
+			el: '.div',
+			data: {
+				books: ['消耗', 'dingdan', 'haha', 'hehe'],
+				currentIndex: ''
+			},
+			methods: {
+				dj(index) {
+					this.currentIndex = index;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

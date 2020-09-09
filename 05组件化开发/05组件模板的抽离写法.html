@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="div">
+		<cpn1></cpn1>
+		<cpn2></cpn2>
+		<cpn3></cpn3>
+	</div>
+	<!-- 分离方法一 -->
+	<script type="text/x-template" id="cpn1">
+		<div>
+			<h2>组件分离一</h2>
+		</div>
+	</script>
+	<!-- 分离方法二 -->
+	<template id="cpn2">
+		<div>
+			<h2>组件分离二</h2>
+		</div>
+	</template>
+	<script type="text/javascript">
+		Vue.component('cpn3', {
+			template: '#cpn1'
+		})
+		const app = new Vue({
+			el: '.div',
+			components: {
+				cpn1: {
+					template: '#cpn1'
+				},
+				cpn2: {
+					template: '#cpn2'
+				}
+			}
+		})
+	</script>
+</body>
+</html>

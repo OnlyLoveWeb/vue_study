@@ -1,0 +1,13 @@
+import {add, name, mul, Person} from './math.js';
+console.log(add(20, 30));
+// console.log(mul(20, 30));
+console.log(name);
+console.log(mul(1, 10));
+const person = new Person();
+person.run();
+import addr from './math.js';
+console.log(addr);
+import say from './math.js';
+say();
+import * as more from './math.js';
+console.log(more.one);

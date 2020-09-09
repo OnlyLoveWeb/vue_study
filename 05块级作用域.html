@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button>按钮1</button>
+		<button>按钮1</button>
+		<button>按钮1</button>
+		<button>按钮1</button>
+		<button>按钮1</button>
+		<script type="text/javascript">
+			// 1.使用var
+			var btns = document.getElementsByTagName('button');
+			for(var i = 0; i < btns.length; i++){
+				btns[i].addEventListener('click', function(){
+					console.log('第' + i + '个按钮');
+				})
+			}
+			// 使用let
+			const btns = document.getElementsByTagName('button');
+			for(let i = 0; i < btns.length; i++){
+				btns[i].addEventListener('click', function(){
+					console.log('第' + i + '个按钮');
+				})
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.active {
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="demo">
+			<li v-for="(movie, index) in movies" :class="{active: currentIndex === index}" @click="dj(index)">{{movie}}</li>
+			
+		</ul>
+		
+		<script type="text/javascript">
+			// const ul = document.querySelector('ul');
+			// ul.addEventListener('click', function(e){
+			// 	// for(let i = 0; i < ul.children.length; i++){
+			// 	// 	ul.children[i].style.backgroundColor = '';
+			// 	// }
+			// 	e.target.style.backgroundColor = 'red';
+			// 
+			const app = new Vue({
+				el: '#demo',
+				data: {
+					movies: ['1', '2', '3'],
+					currentIndex: ''
+				},
+				
+				methods: {
+					dj(index) {
+						this.currentIndex = index;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

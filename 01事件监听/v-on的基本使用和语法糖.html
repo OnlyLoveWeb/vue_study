@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="div">
+		<h1>{{counter}}</h1>
+		<!-- <button v-on:click="increment">+</button>
+		<button v-on:click="decrement">-</button> -->
+		<!-- 语法糖 -->
+		<button @click="increment">+</button>
+		<button @click="decrement">-</button>
+	</div>
+	<script type="text/javascript">
+		const app = new Vue({
+			el: '.div',
+			data: {
+				counter: 0
+			},
+			computed: {
+				
+			},
+			methods: {
+				increment(){
+					this.counter++;
+					if(this.counter > 10){
+						this.counter = 0;
+					}
+				},
+				decrement(){
+					this.counter--;
+					if(this.counter < 0){
+						this.counter = 0;
+						console.log('再减就是负数了');
+						
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

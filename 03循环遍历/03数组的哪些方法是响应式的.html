@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="div">
+		<ul>
+			<li v-for="item in letter">{{item}}</li>
+		</ul>
+		<button @click="btnClick">按钮</button>
+	</div>
+	<script type="text/javascript">
+		const app = new Vue({
+			el: '.div',
+			data: {
+				letter: ['a', 'e', 'c', 'd']
+			},
+			methods: {
+				
+				btnClick() {
+					// 1.push()在数组的最后添加元素
+					// this.letter.push('w');
+					// 2.pop()删除数组的最后一个元素
+					// this.letter.pop();
+					// 3.shift()删除数组中的第一个元素
+					// this.letter.shift();
+					// 4.unshift()在数组最前面添加元素
+					// this.letter.unshift('w','a','d');
+					// 5.splice的作用，删除元素/插入元素/替换元素
+					// 删除元素:从第一个元素开始，删除后面的所有元素
+					// this.letter.splice(1)
+					// 删除元素：从第一个元素开始，删除指定个数的元素
+					// this.letter.splice(1, 2);
+					// 插入元素：从第一个元素开始，插入一个元素
+					// this.letter.splice(1, 0, 'w');
+					// 替换元素：从第一个元素开始，替换后面的指定个数的元素
+					// this.letter.splice(1, 2, 'w', 's');
+					// 6.sort()将数据按有序排列
+					// this.letter.sort();
+					// 7.reverse()将数据反转排列
+					// this.letter.reverse();
+					// 通过数组的索引值改变数组，VUE不会响应，DOM不会重新渲染
+					// this.letter[0] = 'as';
+					// set()函数有三个参数：第一个--表示要修改的对象；第二个--修改对象中的元素位置；第三个
+					// 修改后的元素
+					Vue.set(this.letter, 0, 'gg');
+				}
+			}
+			})
+			
+	</script>
+</body>
+</html>

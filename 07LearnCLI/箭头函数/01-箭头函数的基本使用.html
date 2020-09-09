@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1、参数问题
+    // 1.1两个参数
+    const sum = (num1, num2) => {
+      return num1 + num2;
+    }
+    console.log(sum(1, 2));
+    // 1.2个参数
+    // 当只有一个参数的时候，包含参数的小括号可以省略不写
+    const power = num => {
+      return num * num;
+    }
+    // 1.3没有参数
+    // 没有参数时，小括号不可以省略
+    const power1 = () => {
+
+    }
+    console.log(power(2));
+    // 2.函数内部有多行代码时，正常写
+    const test = () => {
+      console.log('hello world');
+      console.log('hello vue.js');
+    }
+    const print = (a, b) => a + b;
+    console.log(print(2, 4));
+
+    const demo = () => console.log('hi');
+    console.log(demo());
+  </script>
+</body>
+</html>

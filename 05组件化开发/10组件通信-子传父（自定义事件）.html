@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="div">
+		<cpn @btn-click="btnclick" :counter='counter' @btn-click-one='increment' @btn-click-two='decrement'></cpn>
+	</div>
+	<template id="cpn">
+		<div>
+			<button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>
+			<p>当前计数是: {{counter}}</p>
+			<button @click="btnClick1">+</button>
+			<button @click="btnClick2">-</button>
+		</div>
+	</template>
+	<script type="text/javascript">
+		const cpn = {
+			template: '#cpn',
+			data() {
+				return {
+					categories: [
+						{id: 'aaa', name: '精品推荐'},
+						{id: 'bbb', name: '手机数码'},
+						{id: 'ccc', name: '家用家电'},
+						{id: 'ddd', name: '电脑办公'}
+					]
+				}
+			},
+			methods: {
+				btnClick(item) {
+					this.$emit('btn-click', item);
+				},
+				btnClick1() {
+					this.$emit('btn-click-one')
+				},
+				btnClick2() {
+					this.$emit('btn-click-two')
+				}
+			},
+			props: {
+				counter: {
+					type: Number,
+					default() {
+						return 0
+					}
+				}
+			}
+		}
+		const app = new Vue({
+			el: '.div',
+			data: {
+				counter: 0
+			},
+			methods: {
+				btnclick(item) {
+					console.log(item.name);
+				},
+				increment() {
+					this.counter++;
+				},
+				decrement() {
+					this.counter--;
+				}
+			},
+			components: {
+				cpn
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="div">
+		<!-- checkbox单选框 -->
+		<label for="agree">
+			<input type="checkbox" name="" id="agree" value="" v-model="isAgree" />同意协议
+			<h1>{{isAgree}}</h1>
+			<button :disabled="!isAgree">下一步</button>
+		</label>
+	
+		<!-- checkbox多选框 -->
+		<label for="like">
+			<input type="checkbox" value="篮球" v-model="like">篮球
+			<input type="checkbox" value="足球" v-model="like">足球
+			<input type="checkbox" value="羽毛球" v-model="like">羽毛球
+			<input type="checkbox" value="乒乓球" v-model="like">乒乓球
+		</label>
+		<h2>{{like}}</h2>
+	</div>
+	<script type="text/javascript">
+		const app = new Vue({
+			el: '.div',
+			data: {
+				isAgree: false, //对应单选框
+				like: []  //对应多选框
+			},
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="div">
+		<h1></h1>
+		<!-- 如果方法btn1中无需传入参数时，btn1()的‘（）’可以不写 -->
+		<button @click="btn1()">按钮1</button>
+		<button @click="btn1">按钮2</button>
+		<!-- 如果方法btn2需要传递参数， 此时省去小括号；因为在事件定义时，
+		方法本身是需要一个参数的，这个时候，VUE会默认将浏览器产生的event事件
+		对象作为参数传入到方法-->
+		<button @click="btn2">按钮3</button>
+		<button @click="btn2('shen')">按钮4</button>
+		<!-- 方法定义时，我们需要event对象，同时又需要其他参数，该如何获浏览器的event对象 
+		这样获取：$event-->
+		<button @click="btn3('abc', $event)">按钮5</button>
+	</div>
+	<script type="text/javascript">
+		const app = new Vue({
+			el: '.div',
+			data: {
+				
+			},
+			methods: {
+				btn1() {
+					console.log('btn1');
+				},
+				btn2(name) {
+					console.log(name);
+				},
+				btn3(sex, event) {
+					console.log(sex, event);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

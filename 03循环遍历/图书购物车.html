@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		table {
+			border-left: 1px solid #ccc;
+			border-top: 1px solid #ccc;
+			text-align: center;
+		}
+		th, td {
+			border-bottom: 1px solid #ccc;
+			border-right: 1px solid #ccc;	
+		}
+	</style>
+</head>
+<body>
+	<div class="div">
+		<div v-if="books.length">
+			<table cellspacing="0">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>书籍名称</th>
+						<th>出版日期</th>
+						<th>价格</th>
+						<th>购买数量</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="(item, index) in books">
+						<td>{{item.id}}</td>
+						<td>{{item.name}}</td>
+						<td>{{item.date}}</td>
+						<td>{{item.price | getPrice}}</td>
+						<td>
+							<button @click="decrement(index)" v-bind:disabled="item.count <= 1">-</button>
+							{{item.count}}
+							<button @click="increment(index)">+</button>
+						</td>
+							
+						<td><button @click="removeHandle(index)">移除</button></td>
+					</tr>
+				</tbody>
+			</table>
+			<h2>总价格:{{totalPrice | getPrice}}</h2>
+		</div>
+		<h2 v-else>购物车为空</h2>
+	</div>
+	<script type="text/javascript">
+		const app = new Vue({
+			el: '.div',
+			data: {
+				books: [{
+					id: 1,
+					name: '算法导论1',
+					date: '2020-05-11',
+					price: 33.00,
+					count: 1
+				},
+				{
+					id: 2,
+					name: '算法导论2',
+					date: '2020-05-12',
+					price: 34.00,
+					count: 1
+				},
+				{
+					id: 3,
+					name: '算法导论3',
+					date: '2020-05-13',
+					price: 35.00,
+					count: 1
+				},
+				{
+					id: 4,
+					name: '算法导论4',
+					date: '2020-05-14',
+					price: 36.00,
+					count: 1
+				}]
+			},
+			methods:{
+				increment(index) {
+					this.books[index].count++;
+				},
+				decrement(index) {
+					this.books[index].count--;
+				},
+				removeHandle(index) {
+					let len = this.books.length;
+					this.books.splice(index, 1);
+					len--;
+					for(let i = 0; i < len; i++){
+						this.books[i].id = i + 1;
+					}
+				}
+			},
+			computed: {	
+				// 第一种写法
+				// totalPrice() {
+				// 	let totalPrice = 0;
+				// 	for(let i = 0; i < this.books.length; i++){
+				// 		totalPrice += this.books[i].count * this.books[i].price;
+				// 	}
+				// 	return totalPrice;
+				// }
+				// 第二种写法
+				// totalPrice() {
+				// 	let totalPrice = 0;
+				// 	for(let i in this.books){
+				// 		totalPrice += this.books[i].count * this.books[i].price;
+				// 	}
+				// 	return totalPrice;
+				// }
+				// 第三种写法
+				totalPrice() {
+					let totalPrice = 0;
+					for(let item of this.books){
+						totalPrice += item.count * item.price;
+					}
+					return totalPrice;
+				}
+			},
+			filters: {
+				getPrice(price) {
+					return '￥' + price.toFixed(2);
+				}
+			}
+		})
+	</script>
+</body>
+</html>
